@@ -3,8 +3,6 @@
 #include "led.h"
 #include "stateMachines.h"
 
-char switch_state_1, switch_state_2, switch_state_3, switch_state_4, switch_state_changed; /* effectively boolean */
-
 static char 
 switch_update_interrupt_sense()
 {

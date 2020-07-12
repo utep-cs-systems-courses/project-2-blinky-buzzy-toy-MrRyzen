@@ -3,7 +3,7 @@
 #include "switches.h"
 #include "stateMachines.h"
 
-unsigned char leds_changed, state;
+unsigned char state;
 
 void led_init()
 {
@@ -16,7 +16,7 @@ void led_update(){
 
   if(state == 0) {
     
-    ledFlags |= leds_changed;
+    ledFlags = toggle_led;
   
     P1OUT &= (0xff - LEDS) | ledFlags; // clear bits for off leds
     P1OUT |= ledFlags;         // set bits for on leds
