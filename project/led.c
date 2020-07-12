@@ -4,6 +4,7 @@
 #include "stateMachines.h"
 
 unsigned char state;
+char toggle_led;
 
 void led_init()
 {

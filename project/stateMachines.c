@@ -3,6 +3,8 @@
 #include "switches.h"
 #include "led.h"
 
+char toggle_led;
+
 void state_advance() {  
   state = 0;
   
