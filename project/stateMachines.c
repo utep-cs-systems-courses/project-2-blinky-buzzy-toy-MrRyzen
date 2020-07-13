@@ -28,11 +28,21 @@ void state_advance() {
   
 
   switch (state) {
-  case 0:
-    toggle_led = (toggle_led & LED_RED) ? LED_GREEN : LED_RED;
-    break;
   case 1:
     toggle_led = LED_GREEN;
+    break;
+  case 2:
+    toggle_led = LED_RED;
+    break;
+  case 3:
+    toggle_led = LED_GREEN | LED_RED;
+    //buzz
+    break;
+  case 4:
+    //buzz song
+    state = 0;
+  case 0:
+    toggle_led = (toggle_led & LED_RED) ? LED_GREEN : LED_RED;
     break;
   default: break;
   }
