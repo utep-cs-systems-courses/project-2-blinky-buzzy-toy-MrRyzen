@@ -7,7 +7,7 @@ char toggle_led;
 
 void state_advance() {  
   if(switch_state_2 && switch_state_3) {
-    state = 5
+    state = 5;
   }
   if(state == 0 && switch_state_1) {
     state = 1;
@@ -34,7 +34,6 @@ void state_advance() {
   case 1:
     toggle_led = LED_GREEN;
     break;
-
   default: break;
   }
 
