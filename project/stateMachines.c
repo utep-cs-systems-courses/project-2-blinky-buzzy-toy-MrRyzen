@@ -40,7 +40,7 @@ void state_advance() {
     toggle_led = LED_GREEN | LED_RED;
     //buzz
     break;
-  case 10:
+  case 5:
     //buzz song
     state = 0;
     enableWDTInterrupts();
