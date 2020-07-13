@@ -3,13 +3,13 @@
 #include "switches.h"
 #include "led.h"
 
-char toggle_led,;
+char toggle_led;
 
 void state_advance() {  
   state = switch_state_1 + switch_state_2 + switch_state_3 + switch_state_4;
 
   switch (state) {
-  case 1:
+  case 0:
     toggle_led = (toggle_led & LED_RED) ? LED_GREEN : LED_RED;
     break;
   case 1:
