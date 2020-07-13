@@ -9,7 +9,7 @@ void state_advance() {
   if(switch_state_2 && switch_state_3) {
     state = 5;
   }
-  if(state == 0 && switch_state_1) {
+  else if(state == 0 && switch_state_1) {
     state = 1;
   }
   else if(state == 1 && switch_state_3) {
