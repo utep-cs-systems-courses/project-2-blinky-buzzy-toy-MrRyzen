@@ -2,6 +2,7 @@
 #include "stateMachines.h"
 #include "switches.h"
 #include "led.h"
+#include "timerLib/libTimer.h"
 
 char toggle_led = 0;
 
@@ -15,7 +16,7 @@ void state_advance() {
   else if(state == 1 && switch_state_3) {
     state = 2;
   }
-  else if(state == 2 && switch_state_1 && switch_state_3) {
+  else if(state == 2 && switch_state_4) {
     state = 3;
   }
   else if(state == 1 && switch_state_1 && switch_state_2 && switch_state_3 && switch_state_4) {
@@ -41,6 +42,7 @@ void state_advance() {
   case 4:
     //buzz song
     state = 0;
+    enableWDTInterrupts();
   case 0:
     toggle_led = (toggle_led & LED_RED) ? LED_GREEN : LED_RED;
     break;
