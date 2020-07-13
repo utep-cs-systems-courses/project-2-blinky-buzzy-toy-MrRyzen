@@ -7,7 +7,7 @@
 char toggle_led = 0;
 
 void state_advance() {  
-  if(switch_state_2 && switch_state_3) {
+ /* if(switch_state_2 && switch_state_3) {
     state = 5;
   }
   else if(state == 0 && switch_state_1) {
@@ -25,8 +25,9 @@ void state_advance() {
   else {
     //error buzz
     state = 0;
-  }
+  }*/
   
+  state = switch_state_1 + switch_state_2 + switch_state_3 + switch_state_4;
 
   switch (state) {
   case 1:
@@ -35,11 +36,11 @@ void state_advance() {
   case 2:
     toggle_led = LED_RED;
     break;
-  case 3:
+  case 4:
     toggle_led = LED_GREEN | LED_RED;
     //buzz
     break;
-  case 4:
+  case 10:
     //buzz song
     state = 0;
     enableWDTInterrupts();
