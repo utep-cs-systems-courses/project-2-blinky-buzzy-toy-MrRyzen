@@ -6,7 +6,26 @@
 char toggle_led;
 
 void state_advance() {  
-  state = switch_state_1 + switch_state_2 + switch_state_3 + switch_state_4;
+  if(switch_state_2 && switch_state_3) {
+    state = 5
+  }
+  if(state == 0 && switch_state_1) {
+    state = 1;
+  }
+  else if(state == 1 && switch_state_3) {
+    state = 2;
+  }
+  else if(state == 2 && switch_state_1 && switch_state_3) {
+    state = 3;
+  }
+  else if(state == 1 && switch_state_1 && switch_state_2 && switch_state_3 && switch_state_4) {
+    state = 4;
+  }
+  else {
+    //error buzz
+    state = 0;
+  }
+  
 
   switch (state) {
   case 0:
@@ -15,20 +34,8 @@ void state_advance() {
   case 1:
     toggle_led = LED_GREEN;
     break;
-  case 3:
-    toggle_led = LED_RED;
-    break;
-  case 4:
-    toggle_led = LED_GREEN | LED_GREEN;
-    break;
-  case 10:
-    toggle_led = (toggle_led & LED_RED) ? LED_GREEN : LED_RED;
-    break;
-  default:
-    //buzz
-    toggle_led = (toggle_led & LED_RED) ? LED_GREEN : LED_RED;
-    state = 0;
-    break;
+
+  default: break;
   }
 
   led_update();

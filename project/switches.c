@@ -30,8 +30,8 @@ switch_interrupt_handler()
 {
   char p2val = switch_update_interrupt_sense();
   switch_state_1 = (p2val & SW1) ? 0 : 1; /* 0 when SW1 is up */
-  switch_state_2 = (p2val & SW2) ? 0 : 2; /* 0 when SW2 is up */
-  switch_state_3 = (p2val & SW3) ? 0 : 3; /* 0 when SW3 is up */
-  switch_state_4 = (p2val & SW4) ? 0 : 4; /* 0 when SW4 is up */
+  switch_state_2 = (p2val & SW2) ? 0 : 1; /* 0 when SW2 is up */
+  switch_state_3 = (p2val & SW3) ? 0 : 1; /* 0 when SW3 is up */
+  switch_state_4 = (p2val & SW4) ? 0 : 1; /* 0 when SW4 is up */
   state_advance();
 }
