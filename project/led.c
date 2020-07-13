@@ -14,10 +14,9 @@ void led_init()
 
 void led_update(){
   char ledFlags = 0; /* by default, no LEDs on */
+  
+  ledFlags = toggle_led;
 
-  if(state == 0) {
-    ledFlags = (ledFlags & LED_RED) ? LED_GREEN : LED_RED;
-  }
   P1OUT &= (0xff - LEDS) | ledFlags; // clear bits for off leds
   P1OUT |= ledFlags;         // set bits for on leds
 }

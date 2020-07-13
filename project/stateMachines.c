@@ -3,7 +3,7 @@
 #include "switches.h"
 #include "led.h"
 
-char toggle_led;
+char toggle_led = 0;
 
 void state_advance() {  
   if(switch_state_2 && switch_state_3) {
@@ -29,7 +29,7 @@ void state_advance() {
 
   switch (state) {
   case 0:
-    toggle_led = (toggle_led & LED_RED) ? LED_RED : LED_GREEN;
+    toggle_led = (toggle_led & LED_RED) ? LED_GREEN : LED_RED;
     break;
   case 1:
     toggle_led = LED_GREEN;
