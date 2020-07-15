@@ -14,8 +14,10 @@ all: button.elf
 main.elf: ${COMMON_OBJECTS} wdInterruptHandler.o stateMachines.o buzzer.o p2_interrupt_handler.o led.o switches.o main.o timerLib/libTimer.a
 	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^
 
-load: main.elf
+loadTimer:
 	(cd timerLib && make all)
+
+load: loadTimer main.elf
 	msp430loader.sh main.elf
 
 clean:
