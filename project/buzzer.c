@@ -24,22 +24,19 @@ void buzzer_set_period(short cycles) /* buzzer clock = 2MHz.  (period of 1k resu
   CCR1 = cycles >> 1;		/* one half cycle */
 }
 
-void play_song()
-{
-  int D4 = 6810; // musical notes 
-  int E4 = 6067;
-  int F4 = 5726;
-  int G4 = 5102;
-  int A4 = 4545;
-  int B4 = 4049;
-  int C5 = 3822;
-  int D5 = 3405;
-  int E5 = 3033;
-  
-  int song[25] = {F4, A4, B4, B4, F4, A4, B4, B4, F4, A4, B4,
-		  E5, D5, D5, B4, C5, B4, G4, E4, E4, 0, D4, E4, G4, E4};
+void play_song() {
+  short A2 = 233.08;		/* switch2 is p2.1 */
+  short B2 =246.94;		/* switch2 is p2.1 */
+  short A = 440.00;		/* switch1 is p2.0 */
+  short D = 293.66;		/* switch4 is p2.3 */
+  short F = 349.23;
+  short G2 = 415.30;
+  short G = 392.00;		/* switch3 is p2.2 */
+    
+  int song[32] = {D, D, D, A, G2, G, F, D, F, G, 0,
+		  D, D, D, A, G2, G, F, D, F, G, 0, B2, B2, D, A, G2, G, F, D, F, G};
 
-  for (int i = 0; i < 25; i++) {
+  for (int i = 0; i < 32; i++) {
     buzzer_set_period(song[i]);
     __delay_cycles(5000000);
   }

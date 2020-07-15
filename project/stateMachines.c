@@ -40,7 +40,6 @@ void state_advance() {
   case 4:
     play_song();
     state = 0;
-    enableWDTInterrupts();
   case 0:
     if(sw1_state_down) {
       state = 1;
