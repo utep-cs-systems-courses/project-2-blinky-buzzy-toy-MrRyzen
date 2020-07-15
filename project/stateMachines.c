@@ -52,9 +52,9 @@ void state_advance() {
     break;
   case 4:
     play_song();
-    __delay_cycles(5000000);
     state = 0;
     state_advance();
+    break;
   case 0:
     if(sw4_state_down)
       reset_states();
