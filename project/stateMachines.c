@@ -52,6 +52,7 @@ void state_advance() {
     break;
   case 4:
     play_song();
+    __delay_cycles(5000000);
     state = 0;
     state_advance();
   case 0:
