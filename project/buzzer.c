@@ -40,8 +40,6 @@ void play_song() {
     buzzer_set_period(song[i]);
     __delay_cycles(5000000);
   }
-  buzzer_set_period(0); // silence buzzer
-  return;
 }
 
 
