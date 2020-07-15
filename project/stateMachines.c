@@ -6,6 +6,7 @@
 #include "timerLib/libTimer.h"
 
 char toggle_led = 0;
+static char dim = 0;
 
 void state_init() {
   state = 0;
@@ -23,6 +24,8 @@ void reset_states() {
 void state_advance() {
   if(sw4_state_down)
     reset_states();
+  dim++;
+  dim = (dim > 4) 0 : dim;
 
   switch (state) {
   case 1:
@@ -38,7 +41,11 @@ void state_advance() {
     }
     break;
   case 3:
-    toggle_led = LED_GREEN | LED_RED;
+    if (dim == 0)
+      toggle_led = LED_GREEN | LED_RED;
+    else
+      toggle_led = 0;
+    
     if(sw1_state_down && sw2_state_down && sw3_state_down) {
       state = 4;
     }
