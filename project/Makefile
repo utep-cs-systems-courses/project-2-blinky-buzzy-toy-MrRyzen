@@ -22,3 +22,4 @@ load: loadTimer main.elf
 
 clean:
 	rm -f *.o *.elf
+	(cd timerLib && make clean)

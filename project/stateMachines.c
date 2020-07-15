@@ -24,8 +24,10 @@ void reset_states() {
 
 void state_advance() {
   //Switch 4 is exit case for all states
-  if(sw4_state_down)
+  if(sw4_state_down) {
     reset_states();
+    play_beep();
+  }
   //Dimming for case 3 only
   dim++;
   dim = (dim > 8) ? 0 : dim;
