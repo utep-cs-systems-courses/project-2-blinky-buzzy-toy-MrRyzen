@@ -25,7 +25,7 @@ void state_advance() {
   if(sw4_state_down)
     reset_states();
   dim++;
-  dim = (dim > 4) ? 0 : dim;
+  dim = (dim > 8) ? 0 : dim;
 
   switch (state) {
   case 1:
