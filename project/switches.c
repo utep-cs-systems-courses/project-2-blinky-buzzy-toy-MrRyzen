@@ -3,7 +3,7 @@
 #include "led.h"
 #include "stateMachines.h"
 
-char sw1_state_down, sw2_state_down, sw3_state_down, sw4_state_down, sw1_state_changed, sw2_state_changed, sw3_state_changed, sw4_state_changed; /* effectively boolean */
+char sw1_state_down, sw2_state_down, sw3_state_down, sw4_state_down; /* effectively boolean */
 
 static char 
 switch_update_interrupt_sense()
@@ -35,10 +35,6 @@ switch_interrupt_handler()
   sw4_state_down = (p2val & SW4) ? 0 : 1; /* 0 when SW4 is up */
 
   if(sw1_state_down || sw2_state_down || sw3_state_down || sw4_state_down) {
-    sw1_state_changed = sw1_state_down;
-    sw2_state_changed = sw2_state_down;
-    sw3_state_changed = sw3_state_down;
-    sw4_state_changed = sw4_state_down;
     state_advance();
   }
 }
