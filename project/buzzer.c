@@ -1,6 +1,7 @@
 #include <msp430.h>
 #include "timerLib/libTimer.h"
 #include "buzzer.h"
+#include "stateMachines.h"
 
 void buzzer_init()
 {
@@ -40,6 +41,8 @@ void play_song() {
     buzzer_set_period(song[i]);
     __delay_cycles(5000000);
   }
+
+  state_advance();
 }
 
 

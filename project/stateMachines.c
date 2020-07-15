@@ -18,14 +18,14 @@ void reset_states() {
   toggle_led = 0;
   buzzer_set_period(0);
   led_update();
-  state_advance();
 }
 
-void state_advance() {  
+void state_advance() {
+  if(sw4_state_down)
+    reset_states();
+
   switch (state) {
   case 1:
-    if(sw4_state_down)
-      reset_states();
     toggle_led = LED_GREEN;
     if(sw1_state_down && sw3_state_down) {
       state = 2;
@@ -33,8 +33,6 @@ void state_advance() {
     }
     break;
   case 2:
-    if(sw4_state_down)
-      reset_states();
     toggle_led = LED_RED;
     if(sw2_state_down && sw3_state_down) {
       state = 3;
@@ -42,8 +40,6 @@ void state_advance() {
     }
     break;
   case 3:
-    if(sw4_state_down)
-      reset_states();
     toggle_led = LED_GREEN | LED_RED;
     if(sw1_state_down && sw2_state_down && sw3_state_down) {
       state = 4;
@@ -51,13 +47,10 @@ void state_advance() {
     }
     break;
   case 4:
-    play_song();
     state = 0;
-    state_advance();
+    play_song();
     break;
   case 0:
-    if(sw4_state_down)
-      reset_states();
     if(sw1_state_down) {
       state = 1;
       state_advance();
