@@ -4,6 +4,8 @@
 #include "led.h"
 #include "buzzer.h"
 #include "timerLib/libTimer.h"
+
+unsigned char toggle_led;
 //Dim variable higher = lower brightness
 static char dim = 0;
 //Intializes state machine and variables
