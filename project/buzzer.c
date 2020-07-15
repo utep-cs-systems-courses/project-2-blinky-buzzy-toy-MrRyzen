@@ -34,13 +34,15 @@ void play_song() {
   short G2 = 415.30;
   short G = 392.00;		/* switch3 is p2.2 */
     
-  int song[32] = {D, D, D, A, G2, G, F, D, F, G, 0,
-		  D, D, D, A, G2, G, F, D, F, G, 0, B2, B2, D, A, G2, G, F, D, F, G};
+  int song[22] = {D, D, D, A, G2, G, F, D, F, G, 0,
+		  D, D, D, A, G2, G, F, D, F, G, 0};
 
-  for (int i = 0; i < 32; i++) {
+  for (int i = 0; i < 22; i++) {
     buzzer_set_period(song[i]);
     __delay_cycles(5000000);
   }
+
+  state_advance();
 }
 
 
