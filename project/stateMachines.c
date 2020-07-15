@@ -38,7 +38,7 @@ void state_advance() {
     //buzz
     break;
   case 4:
-    buzzer_set_period(D);
+    play_song();
     state = 0;
     enableWDTInterrupts();
   case 0:
