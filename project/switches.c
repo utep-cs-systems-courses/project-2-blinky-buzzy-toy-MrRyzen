@@ -19,7 +19,7 @@ void
 switch_init()			/* setup switch */
 {  
   P2REN |= SWITCHES;		/* enables resistors for switches */
-  P2IE |= SWITCHES;		/* enable interrupts from switches */
+  P2IE |= SWITCHES;		  /* enable interrupts from switches */
   P2OUT |= SWITCHES;		/* pull-ups for switches */
   P2DIR &= ~SWITCHES;		/* set switches' bits for input */
   switch_update_interrupt_sense();
@@ -34,6 +34,7 @@ switch_interrupt_handler()
   sw3_state_down = (p2val & SW3) ? 0 : 1; /* 0 when SW3 is up */
   sw4_state_down = (p2val & SW4) ? 0 : 1; /* 0 when SW4 is up */
 
+  //only calls state_advance() if a switch is down
   if(sw1_state_down || sw2_state_down || sw3_state_down || sw4_state_down) {
     state_advance();
   }

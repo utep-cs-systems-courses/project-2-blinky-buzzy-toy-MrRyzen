@@ -25,18 +25,32 @@ void buzzer_set_period(short cycles) /* buzzer clock = 2MHz.  (period of 1k resu
   CCR1 = cycles >> 1;		/* one half cycle */
 }
 
+//Method to play beep indicating moving case
+void play_beep() {
+  
+  buzzer_set_period(750);
+  __delay_cycles(5000000);
+
+  buzzer_set_period(0); // silence buzzer
+  return;
+}
+
+//Method to play a song
 void play_song() {
-  short A2 = 233.08;		/* switch2 is p2.1 */
-  short B2 =246.94;		/* switch2 is p2.1 */
-  short A = 440.00;		/* switch1 is p2.0 */
-  short D = 293.66;		/* switch4 is p2.3 */
+  short A2 = 233.08;	/* notes for the song */
+  short B2 =246.94;
+  short A = 440.00;
+  short D = 293.66;
   short F = 349.23;
   short G2 = 415.30;
-  short G = 392.00;		/* switch3 is p2.2 */
-    
+  short G = 392.00;
+  
+  /* Quick little song tried to play megolavania
+  but this song wasnt too bad so i kept it */
   int song[22] = {D, D, D, A, G2, G, F, D, F, G, 0,
 		  D, D, D, A, G2, G, F, D, F, G, 0};
-
+  
+  //Play song with delay between notes
   for (int i = 0; i < 22; i++) {
     buzzer_set_period(song[i]);
     __delay_cycles(5000000);

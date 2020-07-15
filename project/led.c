@@ -4,7 +4,6 @@
 #include "stateMachines.h"
 
 unsigned char state;
-char toggle_led;
 
 void led_init()
 {
@@ -15,7 +14,7 @@ void led_init()
 void led_update(){
   char ledFlags = 0; /* by default, no LEDs on */
   
-  ledFlags = toggle_led;
+  ledFlags = toggle_led;// sets led flags with toggle_led changed in stateMachines
 
   P1OUT &= (0xff - LEDS) | ledFlags; // clear bits for off leds
   P1OUT |= ledFlags;         // set bits for on leds

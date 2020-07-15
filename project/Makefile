@@ -15,6 +15,7 @@ main.elf: ${COMMON_OBJECTS} wdInterruptHandler.o stateMachines.o buzzer.o p2_int
 	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^
 
 load: main.elf
+	(cd timerLib && make all)
 	msp430loader.sh main.elf
 
 clean:
