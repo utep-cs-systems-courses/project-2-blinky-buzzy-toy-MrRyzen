@@ -29,21 +29,18 @@ void state_advance() {
     toggle_led = LED_GREEN;
     if(sw1_state_down && sw3_state_down) {
       state = 2;
-      state_advance();
     }
     break;
   case 2:
     toggle_led = LED_RED;
     if(sw2_state_down && sw3_state_down) {
       state = 3;
-      state_advance();
     }
     break;
   case 3:
     toggle_led = LED_GREEN | LED_RED;
     if(sw1_state_down && sw2_state_down && sw3_state_down) {
       state = 4;
-      state_advance();
     }
     break;
   case 4:
@@ -53,7 +50,6 @@ void state_advance() {
   case 0:
     if(sw1_state_down) {
       state = 1;
-      state_advance();
     }
     toggle_led = (toggle_led & LED_RED) ? LED_GREEN : LED_RED;
     break;

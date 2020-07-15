@@ -42,7 +42,8 @@ void play_song() {
     __delay_cycles(5000000);
   }
 
-  state_advance();
+  buzzer_set_period(0); // silence buzzer
+  return;
 }
 
 
