@@ -11,6 +11,7 @@ void main(void) {
   switch_init();
   led_init();
   buzzer_init();
+  enableWDTInterrupts();
 
   state_init();
   

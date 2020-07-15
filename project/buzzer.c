@@ -41,8 +41,6 @@ void play_song() {
     buzzer_set_period(song[i]);
     __delay_cycles(5000000);
   }
-
-  state_advance();
 }
 
 

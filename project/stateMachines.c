@@ -49,6 +49,7 @@ void state_advance() {
   case 4:
     state = 0;
     play_song();
+    state_advance();
     break;
   case 0:
     if(sw1_state_down) {
